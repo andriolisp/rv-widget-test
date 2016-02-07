@@ -1,0 +1,22 @@
+{
+  "name": "widgets-spa",
+  "version": "1.0.0",
+  "description": "Test for widgets",
+  "main": "index.js",
+  "author": "Carlos Andrioli",
+  "private": true,
+  "scripts": {
+    "prestart": "mongod --dbpath db/data --fork --logpath db/log/db.log && mongo RVWidgets --eval \"db.dropDatabase()\" && mongoimport --db RVWidgets --collection identitycounters < db/scripts/identitycounters.js && mongoimport --db RVWidgets --collection users < db/scripts/users.js && mongoimport --db RVWidgets --collection widgets < db/scripts/widgets.js",
+    "start": "node index.js",
+    "stop": "killall -SIGINT widgetApp",
+    "poststop": "mongo RVWidgets --eval \"db.dropDatabase()\" && mongo admin --eval 'db.shutdownServer()' > db/log/db.log"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "mongoose": "latest",
+    "mongoose-auto-increment": "latest",
+    "mongodb": "latest",
+    "bower": "latest"
+  }
+}

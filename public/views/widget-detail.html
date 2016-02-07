@@ -1,0 +1,77 @@
+<!-- Header Bar -->
+<div ng-include="'views/partial/header.html'"></div>
+<!-- End Header Bar -->
+
+<!-- Create/Edit -->
+<div class="row">
+  <!-- Widget listing -->
+  <div class="col-lg-12" ng-controller="WidgetController">
+    <div class="widget">
+      <div class="widget-header">Widget
+        <div class="pull-right">
+          <button class="btn btn-sm btn-info" type="submit" ng-click="save(widget)" ng-show="widget.id == null || widget.id == undefined" ng-disabled="widgetForm.$invalid">Save</button>
+          <button class="btn btn-sm btn-info" type="submit" ng-click="save(widget.id, widget)" ng-hide="widget.id == null || widget.id == undefined" ng-disabled="widgetForm.$invalid">Save</button>
+        </div></div>
+      <div class="widget-body">
+
+        <form class="form form-horizontal" name="widgetForm" id="widgetForm">
+
+          <legend ng-show="widget.id == null || widget.id == undefined">Create Widget</legend>
+          <legend ng-hide="widget.id == null || widget.id == undefined">Edit Widget: {{widget.id}}</legend>
+          <div style="padding: 15px">
+            <!-- Name-->
+            <div class="form-group" show-errors>
+              <label class="control-label">Name</label>
+              <input id="widget-name" type="text" name="name" placeholder="name" class="form-control" ng-model="widget.name" required>
+              <p class="help-block" ng-if="widgetForm.name.$error.required">The name is required</p>
+            </div>
+
+            <!-- Price-->
+            <div class="form-group" show-errors>
+              <label class="control-label">Price</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div><input id="widget-price" type="number" name="price" placeholder="0.00" class="form-control" ng-model="widget.price" ng-pattern="/^\d+(?:\.\d\d?)?$/" string-to-number required>
+              </div>
+              <p class="help-block" ng-if="widgetForm.price.$error.required">The price is required</p>
+              <p class="help-block" ng-if="widgetForm.price.$error.pattern">Invalid price, only two decimals digits are allowed</p>
+              <p class="help-block" ng-if="widgetForm.price.$error.number">The price is numeric</p>
+            </div>
+
+            <!-- Color-->
+            <div class="form-group" show-errors>
+              <label class="control-label">Color</label>
+              <select id="widget-color" name="color" class="form-control" ng-model="widget.color" required>
+                <option>red</option>
+                <option>purple</option>
+                <option>black</option>
+                <option>green</option>
+                <option>magenta</option>
+                <option>white</option>
+                <option>depends on the viewing angle</option>
+              </select>
+              <p class="help-block" ng-if="widgetForm.color.$error.required">The color is required</p>
+            </div>
+
+            <!-- Melts-->
+            <div class="checkbox">
+              <label class="control-label">
+                <input type="checkbox" name="properties" id="widget-properties-0" value="melts" ng-model="widget.melts" class="checkbox">
+                Melts?
+              </label>
+            </div>
+
+            <!-- Inventory-->
+            <div class="form-group" show-errors>
+              <label class="control-label">Inventory</label>
+              <input id="widget-count" name="count" type="number" placeholder="0" class="form-control" ng-model="widget.inventory" ng-pattern="/^\d+$/" string-to-number required>
+              <p class="help-block" ng-if="widgetForm.count.$error.required">The quantity is required</p>
+              <p class="help-block" ng-if="widgetForm.count.$error.number">The quantity is numeric</p>
+              <p class="help-block" ng-if="widgetForm.count.$error.pattern">The quantity cannot have decimal places</p>
+            </div>
+
+          </div>
+        </form>
+      </div><!-- End Widget body -->
+    </div><!-- End Widget -->
+  </div><!-- End Column -->
+</div><!-- End Row -->

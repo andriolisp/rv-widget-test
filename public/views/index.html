@@ -1,0 +1,88 @@
+<!-- Header Bar -->
+<div ng-include="'views/partial/header.html'"></div>
+<!-- End Header Bar -->
+
+<!-- Dashboard Boxes -->
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="widget">
+      <a href="#users">
+        <div class="widget-header">
+          <div class="widget-icon green pull-left">
+            <i class="fa fa-users"></i>
+          </div>
+          <div class="title">{{users.length}}</div>
+          <div class="comment">Users</div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="widget">
+      <a href="#widgets">
+        <div class="widget-header">
+          <div class="widget-icon green pull-left">
+            <i class="fa fa-users"></i>
+          </div>
+          <div class="title">{{widgets.length}}</div>
+          <div class="comment">Widgets</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Tables -->
+<div class="row">
+
+  <!-- Users listing -->
+  <div class="col-lg-6">
+    <div class="widget">
+      <div class="widget-header">Users
+        <div class="pull-right"><input type="text" class="form-control input-sm" ng-model="userName"></div>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center col-md-2">ID</th>
+              <th class="col-md-10">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="u in users | orderBy: 'id' | filter: userName">
+              <td class="text-center"><a href="#users/{{u.id}}">{{u.id}}</a></td>
+              <td><a href="#user/{{u.id}}">{{u.name}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- End Users -->
+
+  <!-- Widget listing -->
+  <div class="col-lg-6">
+    <div class="widget">
+      <div class="widget-header">Widgets
+        <div class="pull-right"><input type="text" class="form-control input-sm" ng-model="widgetName"></div>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center col-md-2">ID</th>
+              <th class="col-md-10">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="w in widgets | orderBy: 'id' | filter: widgetName">
+              <td class="text-center"><a href="#widget/{{w.id}}">{{w.id}}</a></td>
+              <td><a href="#widget/{{w.id}}">{{w.name}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- End Widgets -->
+
+</div><!-- End Tables -->

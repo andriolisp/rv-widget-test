@@ -1,0 +1,12 @@
+{
+    "name": "widgets-spa",
+    "version": "1.0.0",
+    "dependencies": {
+        "bootstrap": "latest",
+        "font-awesome": "latest",
+        "rdash-ui": "latest",
+        "angular": "latest",
+        "angular-route": "latest",
+        "angular-cookies": "latest"
+    }
+}
