@@ -1,5 +1,5 @@
 # Widgets Single Page App Demo
-This is a simple multi-page HTML site. The goal of this project is to take this hardcoded HTML site, and make it hit an API for showing/listing user and widget information. 
+This is a simple multi-page HTML site. The goal of this project is to take this hardcoded HTML site, and make it hit an API for showing/listing user and widget information.
 
 
 ## Features
@@ -22,3 +22,18 @@ There's an API available at `http://spa.tglrw.com:4000` for retrieving the data 
 - POST `/widgets` for creating new widgets [http://spa.tglrw.com:4000/widgets](http://spa.tglrw.com:4000/widgets)
 - PUT `/widgets/:id` for updating existing widgets [http://spa.tglrw.com:4000/widgets/:id](http://spa.tglrw.com:4000/widgets/:id)
 
+# Local Development and Instructions
+- To use the local endpoints, after the command 'npm install' stop your mongodb service, change the files 'public/js/user/UserService.js' and 'public/js/widget/WidgetService.js' and comment the line with the variable ENDPOINT_URI to use the localhost.
+- After that if you want to run with the local API run the command 'npm start' to run the local mongodb and run the initial scripts to load the initial data.
+- The command 'npm stop' drop the test database and stops the mongodb service
+- If you want only to run the application on the remote API, run the command node index.js
+
+Open in your browser the address 'http://localhost:4000' to open the application
+
+## The local endpoints are as follows:
+- GET `/users` [http://localhost:4000/users](http://localhost:4000/users)
+- GET `/users/:id` [http://localhost:4000/users/:id](http://localhost:4000/users/:id)
+- GET `/widgets` [http://localhost:4000/widgets](http://localhost:4000/widgets)
+- GET `/widgets/:id` [http://localhost:4000/widgets/:id](http://localhost:4000/widgets/:id)
+- POST `/widgets` for creating new widgets [http://localhost:4000/widgets](http://localhost:4000/widgets)
+- PUT `/widgets/:id` for updating existing widgets [http://localhost:4000/widgets/:id](http://localhost:4000/widgets/:id)
